@@ -1,19 +1,23 @@
-## In dockerfile directory run:
+### Create docker image
+- In dockerfile directory run:
 ```sh
 docker build -t timescaledb .
 ```
 - command belove create image 'timescaledb' 
-## Create & start container
-### Run this before creating systemd service
+### Create & start container
+**Run this before creating systemd service**
 ```sh
 docker run -d --name timescaledb-server -p 5432:5432 timescaledb
 ```
-- after this check that everything is ok and container running (docker ps)
+- Check that everything is ok and container running
+```sh
+docker ps
+```
 - then stop container 
 ```sh
 docker stop timescaledb-server
 ```
-## Create systemd timescaledb.service (autostart)
+### Create systemd timescaledb.service (autostart)
 - Create timescaledb.service file into /lib/systemd/system/
 - then run following commands
 ```sh
