@@ -1,0 +1,16 @@
+[Unit]
+Description=TimescaleDB Docker container auto-start
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=pi
+TimeoutStartSec=5
+Restart=always
+RemainAfterExit=true
+ExecStart=/usr/bin/docker start timescaledb-server
+ExecStop=/usr/bin/docker stop -t 2 timescaledb-server
+
+[Install]
+WantedBy=default.target
+
